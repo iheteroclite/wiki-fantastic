@@ -1,4 +1,4 @@
 # wiki-fantastic
-** Under Construction **w
+**Under Construction**
 
 A simple wiki boilerplate written in Python+Django with Markdown entries
