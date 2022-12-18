@@ -7,3 +7,6 @@ urlpatterns = [
     path('wiki/<str:title>', views.entry, name='entry'),
     path('wiki/str:<title>', views.entry, name='entry')
 ]
+
+
+handler404 = 'encyclopedia.views.error_404'

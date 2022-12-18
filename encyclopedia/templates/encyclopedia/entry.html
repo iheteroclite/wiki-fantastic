@@ -7,6 +7,8 @@
 {% block body %}
     <!--Autoescape allows this to render as HTML, not text -->
     {% autoescape off %}
+        {{req}}
         {{text}}
+
     {% endautoescape %}
 {% endblock %}

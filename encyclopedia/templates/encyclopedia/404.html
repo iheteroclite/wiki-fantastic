@@ -1,15 +1,22 @@
-{% extends "encyclopedia/layout.html" %}
 
-{% block title %}
-    Page Not Found
-{% endblock %}
-
-{% block body %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<meta charset="utf-8">
+<title>Not Found</title>
     <!--Autoescape allows this to render as HTML, not text -->
-    {% autoescape off %}
-        <h1>Wowzers!</h1>
-        <p>It's hard to <em>believe</em>, but we don't have a page for <strong>{{title}}</strong>! Would you like to make one?</p>
+{% autoescape off %}
+    <h1>Wowzers!</h1>
+    <!--TODO: query if there are similar pages -->
 
-        <!--TODO: query if there are similar pages -->
-    {% endautoescape %}
-{% endblock %}
+<!--if there's a match for /wiki/<path> then suggest it -->
+{% if path_title %}
+    <p>We could not find the above page on our servers.</p>
+    <p><b>Did you mean: <a href="/wiki/{{path_title}}">/wiki/{{path_title}}</a></b></p>
+{% else %}
+<!-- TODO: link the 'make one' to the add page when created-->
+    <p>It's hard to <em>believe</em>, but we don't have a page for <strong>{{title}}</strong>! Would you like to make one?</p>
+{% endif %}
+{% endautoescape %}
+<p style="clear:both;">Alternatively, you can visit the <a href="/">Main Page</a>.</p>
+</div>
+</html>
