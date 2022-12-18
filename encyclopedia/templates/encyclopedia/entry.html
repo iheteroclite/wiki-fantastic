@@ -1,10 +1,12 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Encyclopedia
+    {{title}}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ title }}</h1>
-    <p>{{ text }}</p>
+    <!--Autoescape allows this to render as HTML, not text -->
+    {% autoescape off %}
+        {{text}}
+    {% endautoescape %}
 {% endblock %}
