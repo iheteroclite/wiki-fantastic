@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Page Not Found
+{% endblock %}
+
+{% block body %}
+    <!--Autoescape allows this to render as HTML, not text -->
+    {% autoescape off %}
+        <h1>Wowzers!</h1>
+        <p>It's hard to <em>believe</em>, but we don't have a page for <strong>{{title}}</strong>! Would you like to make one?</p>
+
+        <!--TODO: query if there are similar pages -->
+    {% endautoescape %}
+{% endblock %}

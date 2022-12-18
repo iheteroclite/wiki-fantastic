@@ -10,13 +10,21 @@ def index(request):
     })
 
 def entry(request, title):
-    match = [i for i in util.list_entries() if (i.lower() == title.lower())]
-    if match:
+    matches = [i for i in util.list_entries() if (i.lower() == title.lower())]
+    if matches:
+        text = markdown(util.get_entry(matches[0]))
+        # test if more than one match
+        if len(matches) > 1:
+            text = f'<h1>Multiple entries for {title}</h1>'
+            for match in matches:
+                # TODO format this div style to a max size (like 1/3 of page + title height or something)
+                text += f'<div>{markdown(util.get_entry(match))}</div>'
+
         return render(request, 'encyclopedia/entry.html', {
-            'title': match[0],
-            'text': markdown(util.get_entry(match[0]))
+            'title': matches[0],
+            'text': text
         })
-    # TODO: test if more than one match - display options
+    # TODO: redirect to the correct page if user misses the /wiki/ bit
     return render(request, 'encyclopedia/404.html', {
         'title': title
     })
